@@ -43,7 +43,7 @@ body {
 }
 
 .main-nav ul li a:hover {
-    background-color: #002b5e;
+    background-color: #0e7828;
 }
 
 /* 섹션 스타일 */
@@ -51,10 +51,9 @@ section {
     padding: 40px 0;
 }
 
-.about,
-.services,
-.team,
-.contact {
+.upload-section,
+.auction-section,
+.contact-section {
     background-color: white;
     border-radius: 8px;
     margin-bottom: 20px;
@@ -63,6 +62,21 @@ section {
 
 h2 {
     margin-bottom: 20px;
+}
+
+.submit-button,
+.bid-button {
+    background-color: #1da240;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-button:hover,
+.bid-button:hover {
+    background-color: #0e7828;
 }
 
 .footer {

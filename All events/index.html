@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>광고 & 프로모션 플랫폼</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <!-- 헤더 섹션 -->
+    <header class="header">
+        <div class="container">
+            <h1>광고 & 프로모션 플랫폼</h1>
+            <p>광고주가 직접 상품을 업로드하고 경매를 통해 광고 자리를 차지하세요!</p>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#upload">상품 업로드</a></li>
+                    <li><a href="#auction">경매 참여</a></li>
+                    <li><a href="#contact">문의하기</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 상품 업로드 섹션 -->
+    <section id="upload" class="upload-section">
+        <div class="container">
+            <h2>상품 업로드</h2>
+            <form id="uploadForm">
+                <label for="productName">상품명:</label>
+                <input type="text" id="productName" name="productName" required>
+                <label for="productDescription">상품 설명:</label>
+                <textarea id="productDescription" name="productDescription" rows="4" required></textarea>
+                <label for="promotionPeriod">프로모션 기간:</label>
+                <input type="date" id="promotionStart" name="promotionStart" required>
+                <input type="date" id="promotionEnd" name="promotionEnd" required>
+                <button type="submit" class="submit-button">상품 등록</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- 광고 경매 섹션 -->
+    <section id="auction" class="auction-section">
+        <div class="container">
+            <h2>광고 경매</h2>
+            <p>현재 진행 중인 광고 경매에 참여하여 광고 자리를 차지하세요!</p>
+            <button class="bid-button" onclick="startAuction()">경매 참여하기</button>
+        </div>
+    </section>
+
+    <!-- 문의하기 섹션 -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>문의하기</h2>
+            <form>
+                <label for="name">이름:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">이메일:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">메시지:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+                <button type="submit" class="submit-button">제출하기</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- 푸터 섹션 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 광고 & 프로모션 플랫폼. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
