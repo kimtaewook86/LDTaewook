@@ -1,24 +1,16 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const uploadForm = document.getElementById('uploadForm');
+    const bidForm = document.getElementById('bidForm');
 
-    uploadForm.addEventListener('submit', function (event) {
-        event.preventDefault(); // 기본 폼 제출 동작 방지
+    bidForm.addEventListener('submit', function (event) {
+        event.preventDefault(); // 기본 폼 제출 방지
 
-        const productName = document.getElementById('productName').value;
-        const productDescription = document.getElementById('productDescription').value;
-        const promotionStart = document.getElementById('promotionStart').value;
-        const promotionEnd = document.getElementById('promotionEnd').value;
+        const bidAmount = document.getElementById('bidAmount').value;
 
-        if (productName && productDescription && promotionStart && promotionEnd) {
-            alert('상품이 성공적으로 등록되었습니다!');
-            uploadForm.reset(); // 폼 초기화
+        if (bidAmount) {
+            alert(`입찰이 완료되었습니다! 입찰가: ${bidAmount}원`);
+            // 서버로 입찰 정보 전송 및 결제 처리 로직 추가
         } else {
-            alert('모든 필드를 입력해 주세요.');
+            alert('입찰 금액을 입력해 주세요.');
         }
     });
 });
-
-function startAuction() {
-    alert('경매가 시작되었습니다! 최고의 입찰자가 광고 자리를 차지합니다.');
-    // 추가 경매 로직을 여기에 구현합니다.
-}

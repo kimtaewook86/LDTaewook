@@ -1,88 +1,99 @@
-/* 기본 스타일 */
 body {
     font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
     margin: 0;
     padding: 0;
-    line-height: 1.6;
+}
+
+/* Nav Bar 고정 해제 */
+.navbar {
+    position: static;
+}
+
+.navbar-nav .nav-link[href="#features"] {
+    font-size: 12px;
+    /* 원하는 크기로 설정 */
+}
+
+.navbar-nav .nav-link[href="#about"] {
+    font-size: 12px;
+}
+
+.navbar-nav .nav-link[href="#testimonials"] {
+    font-size: 12px;
+}
+
+.navbar-nav .nav-link[href="#contact"] {
+    font-size: 12px;
+}
+
+header {
     text-align: center;
-    background-color: #f4f4f4;
+    margin-bottom: 20px;
 }
 
-.container {
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px;
-}
 
-/* 헤더 스타일 */
-.header {
-    background-color: #1da240;
-    color: white;
-    padding: 20px 0;
-}
 
-.header h1 {
-    margin: 0;
-    font-size: 2.5rem;
-}
-
-.main-nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 10px;
-}
-
-.main-nav ul li a {
-    color: white;
-    text-decoration: none;
-    padding: 5px 10px;
-    transition: background-color 0.3s ease;
-}
-
-.main-nav ul li a:hover {
-    background-color: #0e7828;
-}
-
-/* 섹션 스타일 */
-section {
-    padding: 40px 0;
-}
-
-.upload-section,
-.auction-section,
-.contact-section {
+.product-item {
     background-color: white;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h2 {
-    margin-bottom: 20px;
-}
-
-.submit-button,
-.bid-button {
-    background-color: #1da240;
-    color: white;
-    border: none;
-    padding: 10px 20px;
+    border: 1px solid #e9ecef;
     border-radius: 5px;
-    cursor: pointer;
-}
-
-.submit-button:hover,
-.bid-button:hover {
-    background-color: #0e7828;
-}
-
-.footer {
-    background-color: #333;
-    color: #f0f0f0;
     text-align: center;
-    padding: 10px 0;
-    width: 100%;
+    position: relative;
+    padding: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(10, 7, 7, 0.1);
+}
+
+.product-rank {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #edf1ea;
+    color: rgb(236, 118, 118);
+    padding: 5px 10px;
+    border-radius: 50%;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.product-name {
+    font-size: 1rem;
+    margin: 10px 0;
+    color: #333;
+}
+
+.product-brand {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.product-price {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: #999;
+    margin-right: 5px;
+}
+
+.discounted-price {
+    font-weight: bold;
+    color: #d9534f;
+}
+
+.product-discount {
+    font-size: 0.9rem;
+    color: #d9534f;
+}
+
+.product-reviews {
+    font-size: 0.8rem;
+    color: #777;
 }
