@@ -1,20 +1,3 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const bidForm = document.getElementById('bidForm');
-
-    bidForm.addEventListener('submit', function (event) {
-        event.preventDefault(); // 기본 폼 제출 방지
-
-        const bidAmount = document.getElementById('bidAmount').value;
-
-        if (bidAmount) {
-            alert(`입찰이 완료되었습니다! 입찰가: ${bidAmount}원`);
-            // 서버로 입찰 정보 전송 및 결제 처리 로직 추가
-        } else {
-            alert('입찰 금액을 입력해 주세요.');
-        }
-    });
-});
-
 // 상품 데이터를 저장하는 배열
 const products = [
     {
@@ -22,144 +5,155 @@ const products = [
         imageSrc: './images/rice.jpg',
         name: '상품명 1',
         brand: '브랜드명',
-        originalPrice: '40,500원',
-        discountedPrice: '24,300원',
-        discount: '40% 할인',
-        reviews: '리뷰 100개'
+        originalPrice: 150000,
+        discountedPrice: 120000,
+        discount: '20%',
+        reviews: '리뷰 50개'
     },
     {
         rank: 2,
-        imageSrc: './images/계란.jpg',
+        imageSrc: './images/1.jpg',
         name: '상품명 2',
         brand: '브랜드명',
-        originalPrice: '40,500원',
-        discountedPrice: '24,300원',
-        discount: '40% 할인',
-        reviews: '리뷰 100개'
+        originalPrice: 280000,
+        discountedPrice: 210000,
+        discount: '25%',
+        reviews: '리뷰 150개'
     },
     {
         rank: 3,
-        imageSrc: './images/고려은단.jpg',
+        imageSrc: './images/2.jpg',
         name: '상품명 3',
         brand: '브랜드명',
-        originalPrice: '40,500원',
-        discountedPrice: '24,300원',
-        discount: '40% 할인',
-        reviews: '리뷰 100개'
+        originalPrice: 250000,
+        discountedPrice: 200000,
+        discount: '20%',
+        reviews: '리뷰 75개'
     },
     {
         rank: 4,
-        imageSrc: './images/물티슈.jpg',
+        imageSrc: './images/3.jpg',
         name: '상품명 4',
         brand: '브랜드명',
-        originalPrice: '40,500원',
-        discountedPrice: '24,300원',
-        discount: '40% 할인',
-        reviews: '리뷰 100개'
+        originalPrice: 800000,
+        discountedPrice: 600000,
+        discount: '25%',
+        reviews: '리뷰 200개'
     },
     {
         rank: 5,
-        imageSrc: './images/삼겹살.jpg',
+        imageSrc: './images/4.jpg',
         name: '상품명 5',
         brand: '브랜드명',
-        originalPrice: '40,500원',
-        discountedPrice: '24,300원',
-        discount: '40% 할인',
-        reviews: '리뷰 100개'
+        originalPrice: 750000,
+        discountedPrice: 525000,
+        discount: '30%',
+        reviews: '리뷰 120개'
     },
     {
         rank: 6,
-        imageSrc: './images/삼겹살2.jpg',
+        imageSrc: './images/5.jpg',
         name: '상품명 6',
         brand: '브랜드명',
-        originalPrice: '40,500원',
-        discountedPrice: '24,300원',
-        discount: '40% 할인',
-        reviews: '리뷰 100개'
+        originalPrice: 650000,
+        discountedPrice: 487500,
+        discount: '25%',
+        reviews: '리뷰 180개'
     },
     {
         rank: 7,
-        imageSrc: './images/세트럴.jpg',
+        imageSrc: './images/6.jpg',
         name: '상품명 7',
         brand: '브랜드명',
-        originalPrice: '40,500원',
-        discountedPrice: '24,300원',
-        discount: '40% 할인',
-        reviews: '리뷰 100개'
+        originalPrice: 920000,
+        discountedPrice: 690000,
+        discount: '25%',
+        reviews: '리뷰 300개'
     },
     {
         rank: 8,
-        imageSrc: './images/알람시계.jpg',
+        imageSrc: './images/7.jpg',
         name: '상품명 8',
         brand: '브랜드명',
-        originalPrice: '40,500원',
-        discountedPrice: '24,300원',
-        discount: '40% 할인',
-        reviews: '리뷰 100개'
+        originalPrice: 1200000,
+        discountedPrice: 960000,
+        discount: '20%',
+        reviews: '리뷰 50개'
     },
     {
         rank: 9,
-        imageSrc: './images/이어폰.jpg',
+        imageSrc: './images/8.jpg',
         name: '상품명 9',
         brand: '브랜드명',
-        originalPrice: '40,500원',
-        discountedPrice: '24,300원',
-        discount: '40% 할인',
-        reviews: '리뷰 100개'
+        originalPrice: 1500000,
+        discountedPrice: 1050000,
+        discount: '30%',
+        reviews: '리뷰 75개'
     },
     {
         rank: 10,
-        imageSrc: './images/폼클랜징.jpg',
+        imageSrc: './images/9.jpg',
         name: '상품명 10',
         brand: '브랜드명',
-        originalPrice: '40,500원',
-        discountedPrice: '24,300원',
-        discount: '40% 할인',
+        originalPrice: 2000000,
+        discountedPrice: 1400000,
+        discount: '30%',
         reviews: '리뷰 100개'
     }
 ];
 
-/// 상품 목록을 동적으로 추가하는 함수
-function loadProducts() {
+// 상품 목록을 동적으로 추가하는 함수
+function loadProducts(filteredProducts = products) {
     const productList = document.getElementById('product-list');
+    productList.innerHTML = ''; // 기존 상품 목록 초기화
 
-    // 두 개의 row를 생성
-    const row1 = document.createElement('div');
-    row1.className = 'row justify-content-center mb-4';
-    const row2 = document.createElement('div');
-    row2.className = 'row justify-content-center';
+    // 5개씩 묶어서 row 생성
+    let row;
+    filteredProducts.forEach((product, index) => {
+        // 새로운 row를 시작할 때마다 생성
+        if (index % 5 === 0) {
+            row = document.createElement('div');
+            row.className = 'row justify-content-center mb-4';
+            productList.appendChild(row);
+        }
 
-    products.forEach((product, index) => {
-        // 상품 항목을 위한 div 요소 생성
         const productItem = document.createElement('div');
-        productItem.className = 'col-6 col-md-4 col-lg-2 mb-4'; // 한 줄에 5개를 배치하도록 설정
+        productItem.className = 'col-6 col-md-4 col-lg-2 mb-4';
 
-        // 상품 카드의 HTML 내용 생성
         productItem.innerHTML = `
             <div class="product-item border p-3">
                 <div class="product-rank">${product.rank}</div>
                 <img src="${product.imageSrc}" class="img-fluid mb-2" alt="상품 이미지">
                 <h5 class="product-name">${product.name}</h5>
                 <p class="product-brand">${product.brand}</p>
-                <p class="product-price"><span class="original-price">${product.originalPrice}</span> <span
-                        class="discounted-price text-danger">${product.discountedPrice}</span></p>
+                <p class="product-price"><span class="original-price">${product.originalPrice.toLocaleString('ko-KR')}원</span> <span
+                        class="discounted-price text-danger">${product.discountedPrice.toLocaleString('ko-KR')}원</span></p>
                 <p class="product-discount">${product.discount}</p>
                 <p class="product-reviews">${product.reviews}</p>
             </div>
         `;
 
-        // 첫 번째 row에 5개의 상품을 추가, 나머지는 두 번째 row에 추가
-        if (index < 5) {
-            row1.appendChild(productItem);
-        } else {
-            row2.appendChild(productItem);
-        }
+        row.appendChild(productItem);
     });
-
-    // 생성한 row를 productList에 추가
-    productList.appendChild(row1);
-    productList.appendChild(row2);
 }
 
-// 페이지가 로드될 때 상품을 로드
-document.addEventListener('DOMContentLoaded', loadProducts);
+// 필터링된 상품 목록을 로드하는 함수
+function filterProducts(maxPrice) {
+    let filteredProducts;
+    if (maxPrice === 300000) {
+        filteredProducts = products.filter(product => product.originalPrice <= 300000);
+    } else if (maxPrice === 1000000) {
+        filteredProducts = products.filter(product => product.originalPrice > 300000 && product.originalPrice <= 1000000);
+    } else {
+        filteredProducts = products.filter(product => product.originalPrice > 1000000);
+    }
+    loadProducts(filteredProducts);
+}
+
+// 페이지를 초기화하는 함수
+function resetPage() {
+    loadProducts(products); // 전체 상품을 다시 로드
+}
+
+// 페이지가 로드될 때 전체 상품을 로드
+document.addEventListener('DOMContentLoaded', () => loadProducts());

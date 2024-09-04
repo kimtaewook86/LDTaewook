@@ -97,3 +97,10 @@ header {
     font-size: 0.8rem;
     color: #777;
 }
+
+/* All events 링크의 색상을 검정으로 변경 */
+.event-link {
+    color: black;
+    text-decoration: none;
+    /* 밑줄 제거 (선택사항) */
+}
