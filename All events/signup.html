@@ -27,12 +27,10 @@
             margin-bottom: 10px;
             padding: 10px;
             border-bottom: 1px solid #eee;
-            /* 구분선 추가 */
         }
 
         .terms-check:last-child {
             border-bottom: none;
-            /* 마지막 항목에는 구분선을 제거 */
         }
 
         .terms-check input[type="checkbox"] {
@@ -60,11 +58,11 @@
         <!-- 개별 약관들 -->
         <div class="terms-section">
             <div class="terms-check">
-                <input type="checkbox" id="agree1" name="agree1">
+                <input type="checkbox" id="agree1" name="agree1" class="required">
                 <label for="agree1" class="terms-title">[필수] 네이버 이용약관 동의</label>
             </div>
             <div class="terms-check">
-                <input type="checkbox" id="agree2" name="agree2">
+                <input type="checkbox" id="agree2" name="agree2" class="required">
                 <label for="agree2" class="terms-title">[필수] 개인정보 수집 및 이용 동의</label>
             </div>
             <div class="terms-check">
@@ -82,7 +80,7 @@
         </div>
 
         <div class="text-center">
-            <button type="submit" class="btn btn-primary">다음</button>
+            <button type="button" class="btn btn-primary" onclick="validateAndProceed()">다음</button>
         </div>
     </div>
 
@@ -96,6 +94,25 @@
             checkboxes.forEach(checkbox => {
                 checkbox.checked = source.checked;
             });
+        }
+
+        function validateAndProceed() {
+            // 필수 항목들이 모두 체크되었는지 확인
+            const requiredCheckboxes = document.querySelectorAll('.terms-section .required');
+            let allChecked = true;
+            requiredCheckboxes.forEach(checkbox => {
+                if (!checkbox.checked) {
+                    allChecked = false;
+                }
+            });
+
+            if (allChecked) {
+                // 필수 항목들이 모두 체크된 경우, 다음 페이지로 이동
+                window.location.href = 'personal-info.html';
+            } else {
+                // 필수 항목들이 체크되지 않은 경우, 경고 메시지 표시
+                alert('모든 [필수] 항목에 동의해 주세요.');
+            }
         }
     </script>
 </body>
